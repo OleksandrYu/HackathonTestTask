@@ -1,0 +1,26 @@
+.operation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 500ms;
+}
+
+.operation-container:hover {
+  transform: scale(1.05);
+}
+
+.operation-title {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.operation-date {
+  font-size: 12px;
+  margin: 0;
+  font-weight: lighter;
+}
+
+.operation-link {
+  text-decoration: none;
+}

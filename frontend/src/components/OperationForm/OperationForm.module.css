@@ -1,0 +1,21 @@
+.form-field-container {
+  display: flex;
+  align-content: flex-start;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.form-field-container > :nth-child(2) {
+  margin-left: auto;
+}
+
+.form-container {
+  width: 50vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+}

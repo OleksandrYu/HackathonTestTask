@@ -1,0 +1,10 @@
+.operations-list {
+  padding: 0;
+  list-style: none;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.operations-list > *:not(:last-child) {
+  margin-bottom: 10px;
+}

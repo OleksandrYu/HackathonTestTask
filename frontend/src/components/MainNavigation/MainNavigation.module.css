@@ -1,5 +1,5 @@
 .main-nav {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: rgb(25, 16, 93);
   color: white;
 }
@@ -10,8 +10,11 @@
   display: flex;
 }
 
+.main-nav-li:not(:last-child) {
+  margin-right: 10px;
+}
+
 .main-nav-li {
-  margin-left: 10px;
   position: relative;
 }
 
@@ -38,7 +41,7 @@
   transition: color 500ms;
 }
 
-.link:hover {
+.main-nav-li:hover .link {
   color: #e5c100;
 }
 

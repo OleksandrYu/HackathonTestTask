@@ -14,6 +14,7 @@ const MainNavigation = () => {
                 ? `${classes.link} ${classes.active}`
                 : classes.link;
             }}
+            end
           >
             Home
           </NavLink>
@@ -26,6 +27,7 @@ const MainNavigation = () => {
                 ? `${classes.link} ${classes.active}`
                 : classes.link;
             }}
+            end
           >
             Operations
           </NavLink>

@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
@@ -7,6 +8,9 @@ import OperationsPage from "./pages/OperationsPage";
 import OperationDetailPage from "./pages/OperationDetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import NewOperationPage from "./pages/NewOperationPage";
+
+import store from "./store/OperationRedux";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -18,13 +22,18 @@ const App = () => {
         { path: "user", element: <UserPage /> },
         { path: "operations", element: <OperationsPage /> },
         { path: "operations/:id", element: <OperationDetailPage /> },
+        { path: "operations/new", element: <NewOperationPage /> },
       ],
     },
     { path: "/login", element: <LoginPage /> },
     { path: "/registration", element: <RegistrationPage /> },
   ]);
 
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
+  );
 };
 
 export default App;
