@@ -1,50 +1,53 @@
-const { json } = require("body-parser");
-const Operation = require("../models/operation");
-const Models = require('../models/db/Models')
+const models = require('../models/db/models')
+const Sequelize = require('sequelize');
 
-exports.getOneOperation = (req, res, next) => {
-console.log(Models.userinfo)
-
-//   Operation.fetchAll((operations) => {
-//     const element = operations.filter((i) => i.id == req.params.id);
-//     if (element.length < 1) {
-//       res.status(404).json({ message: "not found" });
-//     }
-
-//     res.status(200).json(element[0]);
-//   });
+exports.getOneOperation = async (req, res, next) => {
+  const result = await models.userinfo.findAll();
 };
 
-exports.getAllOperation = (req, res, next) => {
-  Operation.fetchAll((operations) => {
-    const days = operations
-      .map((op) => op.date)
-      .reduce((accum, date) => {
-        const temp = accum;
-        if (!temp.includes(date)) {
-          temp.push(date);
-        }
-        return temp;
-      }, []);
+exports.getAllOperation = async (req, res, next) => {
+  const email = req.params.email;
 
-    //console.log(days);
-
-    const inDaysOperations = [];
-    for (var day of days) {
-      inDaysOperations.push({
-        day: day,
-        operations: operations.filter((op) => op.date == day),
-      });
-    }
-
-    inDaysOperations.sort((a, b) => new Date(b.day) - new Date(a.day));
-
-    res.json(inDaysOperations);
+  const opearations = await models.userinfo.findOne({
+    attributes: ['email', 'id'],
+    include: [
+      {
+        model: models.single_operation,
+        as: 'single_operations',
+        attributes: ['description', 'title', 'date', 'amount'],
+        include: [
+          {
+            model: models.goal,
+            as: 'goal',
+            attributes: ['name']
+          }
+        ]
+      },
+    ],
+    where: { email: email },
   });
+
+  if (!opearations) res.status(141).json({ error: "sho za precoly" });
+
+  return res.json({ result: opearations });
 };
 
-exports.postAddoperaion = (req, res, next) => {
-  const op = new Operation(req.body);
-  op.save();
-  res.status(200).json({ message: "operation saved" });
+exports.postAddOperation = async (req, res, next) => {
+  const email = req.params.email;
+  const body = req.body;
+  
+  if (!body.description || !body.title || !body.date || !body.amount)
+    res.status(133).json({ error: "sho za precoly" });
+  
+    const user = await models.userinfo.findOne({
+    attributes: ['id'],
+    where: { email: email },
+  });
+  
+  await models.single_operation.create({
+    ...body,
+    user_id: user.id
+  });
+
+  res.json({ result: "success" });
 };
