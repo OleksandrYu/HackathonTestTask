@@ -1,4 +1,4 @@
-.main-nav {
+.main-header {
   padding: 10px 20px;
   background-color: #142241;
   color: white;
@@ -51,4 +51,25 @@
 .main-nav-li:has(.active)::before {
   background-color: #d4af37;
   transform: scaleX(1);
+}
+
+@media screen and (min-width: 1200px) {
+  .main-nav {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .main-nav {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main-nav {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }

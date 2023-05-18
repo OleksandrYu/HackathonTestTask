@@ -1,5 +1,9 @@
 import OperationsList from "../components/Operations/OperationsList";
 import { Link, useLoaderData } from "react-router-dom";
+import OperationsNavigationPanel from "../components/OperationsNavigationPanel/OperationsNavgitaionPanel";
+import React, { useState } from "react";
+
+import classes from "./OperationsPage.module.css";
 
 // const dummyOperations = [
 //   {
@@ -23,13 +27,21 @@ import { Link, useLoaderData } from "react-router-dom";
 // ];
 
 const OperationsPage = () => {
-  const operations = useLoaderData();
+  const [operations, setOperations] = useState(useLoaderData());
+  const [filter, setFilter] = useState(() => {
+    return (obj) => obj;
+  });
+
+  const filteredOperations = filter(operations);
 
   return (
     <>
       <h1>Operations page</h1>
       <Link to="new">New</Link>
-      <OperationsList operations={operations} />
+      <div className={classes["operations-content"]}>
+        <OperationsList operations={filteredOperations} />
+        <OperationsNavigationPanel changeFilter={setFilter} />
+      </div>
     </>
   );
 };
