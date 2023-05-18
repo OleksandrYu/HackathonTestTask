@@ -1,4 +1,4 @@
-.operations-content {
+/* .operations-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: flex-start;
@@ -9,7 +9,7 @@
   .operations-content {
     display: flex;
     flex-direction: column-reverse;
-    /* align-content: center; */
+    align-content: center;
     align-items: stretch;
   }
-}
+} */

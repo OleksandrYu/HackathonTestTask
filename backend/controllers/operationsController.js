@@ -14,29 +14,29 @@ exports.getOneOperation = (req, res, next) => {
 
 exports.getAllOperation = (req, res, next) => {
   Operation.fetchAll((operations) => {
-
     const days = operations
-    .map((op) => op.date)
-    .reduce((accum, date) => {
-      const temp = accum;
-      if (!temp.includes(date)) {
-        temp.push(date);
-      }
-      return temp;
-    }, []);
+      .map((op) => op.date)
+      .reduce((accum, date) => {
+        const temp = accum;
+        if (!temp.includes(date)) {
+          temp.push(date);
+        }
+        return temp;
+      }, []);
 
-  //console.log(days);
+    //console.log(days);
 
-  const inDaysOperations = [];
-  for (var day of days) {
-    inDaysOperations.push({
-      day: day,
-      operations: operations.filter((op) => op.date == day),
-    });
-  }
+    const inDaysOperations = [];
+    for (var day of days) {
+      inDaysOperations.push({
+        day: day,
+        operations: operations.filter((op) => op.date == day),
+      });
+    }
 
-  res.json(inDaysOperations)
-    
+    inDaysOperations.sort((a, b) => new Date(b.day) - new Date(a.day));
+
+    res.json(inDaysOperations);
   });
 };
 

@@ -27,21 +27,21 @@ import classes from "./OperationsPage.module.css";
 // ];
 
 const OperationsPage = () => {
-  const [operations, setOperations] = useState(useLoaderData());
-  const [filter, setFilter] = useState(() => {
-    return (obj) => obj;
-  });
+  const [inDaysOperations] = useState(useLoaderData());
+  // const [filter, setFilter] = useState(() => {
+  //   return (obj) => obj;
+  // });
 
-  const filteredOperations = filter(operations);
+  // const filteredOperations = filter(operations);
 
   return (
     <>
       <h1>Operations page</h1>
       <Link to="new">New</Link>
-      <div className={classes["operations-content"]}>
-        <OperationsList operations={filteredOperations} />
-        <OperationsNavigationPanel changeFilter={setFilter} />
-      </div>
+      {/* <div className={classes["operations-content"]}> */}
+      <OperationsList inDaysOperations={inDaysOperations} />
+      {/* <OperationsNavigationPanel changeFilter={setFilter} /> */}
+      {/* </div> */}
     </>
   );
 };

@@ -1,0 +1,31 @@
+.inday-list {
+  padding: 0;
+  padding-bottom: 20px;
+  border-left: solid 1px #d4af37;
+  position: relative;
+  padding-left: 20px;
+}
+
+.inday-list::before {
+  content: "";
+  height: 6px;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: solid 2px #d4af37;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  outline: 3px solid white;
+}
+
+.inday-list > ul > li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.inday-list > ul {
+  padding: 0;
+  list-style: none;
+  margin-left: 20px;
+}
