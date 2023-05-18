@@ -28,7 +28,7 @@ module.exports = class Operation {
 
   save() {
     getProductsFromFile((products) => {
-      products.push(this);
+      products.unshift(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
         if (err) console.log(err);
       });

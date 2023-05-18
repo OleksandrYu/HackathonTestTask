@@ -4,7 +4,9 @@ import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import OperationsPage, { load as operationsLoad } from "./pages/OperationsPage";
-import OperationDetailPage from "./pages/OperationDetailPage";
+import OperationDetailPage, {
+  load as OperationDetailLoad,
+} from "./pages/OperationDetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
@@ -24,7 +26,11 @@ const App = () => {
           loader: operationsLoad,
         },
         { path: "about", element: <AboutPage /> },
-        { path: "operations/:id", element: <OperationDetailPage /> },
+        {
+          path: "operations/:id",
+          element: <OperationDetailPage />,
+          loader: OperationDetailLoad,
+        },
         { path: "operations/new", element: <NewOperationPage /> },
       ],
     },
