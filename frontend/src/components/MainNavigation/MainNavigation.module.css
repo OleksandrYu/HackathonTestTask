@@ -22,7 +22,6 @@
   content: "";
   position: absolute;
   bottom: -2px;
-  left: 0;
   width: 100%;
   height: 1px;
   background-color: white;
@@ -32,7 +31,7 @@
 
 .main-nav-li:hover::before {
   transform: scaleX(1);
-  background-color: #e5c100;
+  background-color: #d4af37;
 }
 
 .link {
@@ -42,14 +41,14 @@
 }
 
 .main-nav-li:hover .link {
-  color: #e5c100;
+  color: #d4af37;
 }
 
 .active {
-  color: #e5c100;
+  color: #d4af37;
 }
 
 .main-nav-li:has(.active)::before {
-  background-color: #e5c100;
+  background-color: #d4af37;
   transform: scaleX(1);
 }

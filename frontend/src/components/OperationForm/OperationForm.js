@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Card from "../../ui/Card";
@@ -12,20 +11,24 @@ const OperationForm = () => {
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState("");
 
-  const storeDispatcher = useDispatch();
   const navigate = useNavigate();
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
     const operation = {
       id: Math.random(),
       title: title,
-      date: date,
+      date: date.toISOString().substring(0, 10),
       amount: amount,
       description: description,
     };
-    storeDispatcher({ type: "ADD_OPERATION", operation: operation });
-    navigate(-1);
+    console.log(operation);
+    console.log(JSON.stringify(operation));
+    await fetch("http://localhost:8000/api/operations", {
+      method: "POST",
+      body: JSON.stringify(operation),
+    });
+    navigate("/operations");
   };
 
   return (

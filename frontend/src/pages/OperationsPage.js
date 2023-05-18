@@ -1,6 +1,5 @@
 import OperationsList from "../components/Operations/OperationsList";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useLoaderData } from "react-router-dom";
 
 // const dummyOperations = [
 //   {
@@ -24,7 +23,7 @@ import { useSelector } from "react-redux";
 // ];
 
 const OperationsPage = () => {
-  const operations = useSelector((store) => store.operations);
+  const operations = useLoaderData();
 
   return (
     <>
@@ -36,3 +35,11 @@ const OperationsPage = () => {
 };
 
 export default OperationsPage;
+
+export const load = async () => {
+  const operations = await fetch("http://localhost:8000/api/operations").then(
+    (data) => data.json()
+  );
+  //console.log(operations);
+  return operations;
+};

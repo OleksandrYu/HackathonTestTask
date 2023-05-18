@@ -32,6 +32,19 @@ const MainNavigation = () => {
             Operations
           </NavLink>
         </li>
+        <li className={classes["main-nav-li"]}>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => {
+              return isActive
+                ? `${classes.link} ${classes.active}`
+                : classes.link;
+            }}
+            end
+          >
+            About
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

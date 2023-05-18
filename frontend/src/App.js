@@ -1,16 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Provider } from "react-redux";
 
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
-import OperationsPage from "./pages/OperationsPage";
+import OperationsPage, { load as operationsLoad } from "./pages/OperationsPage";
 import OperationDetailPage from "./pages/OperationDetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
-
-import store from "./store/OperationRedux";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -20,7 +18,12 @@ const App = () => {
       children: [
         { path: "", element: <HomePage /> },
         { path: "user", element: <UserPage /> },
-        { path: "operations", element: <OperationsPage /> },
+        {
+          path: "operations",
+          element: <OperationsPage />,
+          loader: operationsLoad,
+        },
+        { path: "about", element: <AboutPage /> },
         { path: "operations/:id", element: <OperationDetailPage /> },
         { path: "operations/new", element: <NewOperationPage /> },
       ],
@@ -29,11 +32,7 @@ const App = () => {
     { path: "/registration", element: <RegistrationPage /> },
   ]);
 
-  return (
-    <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
-    </Provider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;
