@@ -14,7 +14,29 @@ exports.getOneOperation = (req, res, next) => {
 
 exports.getAllOperation = (req, res, next) => {
   Operation.fetchAll((operations) => {
-    res.json(operations);
+
+    const days = operations
+    .map((op) => op.date)
+    .reduce((accum, date) => {
+      const temp = accum;
+      if (!temp.includes(date)) {
+        temp.push(date);
+      }
+      return temp;
+    }, []);
+
+  //console.log(days);
+
+  const inDaysOperations = [];
+  for (var day of days) {
+    inDaysOperations.push({
+      day: day,
+      operations: operations.filter((op) => op.date == day),
+    });
+  }
+
+  res.json(inDaysOperations)
+    
   });
 };
 
