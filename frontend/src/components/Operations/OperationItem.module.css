@@ -2,12 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 500ms;
+  transition: background-color 300ms;
   position: relative;
 }
 
 .item:hover .operation-container {
-  transform: scale(1.05);
+  background-color: #21396c;
 }
 
 .operation-title {

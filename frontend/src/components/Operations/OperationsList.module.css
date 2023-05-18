@@ -1,3 +1,9 @@
+.operations {
+  height: 65vh;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
 .operations-list {
   padding: 0;
   list-style: none;

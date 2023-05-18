@@ -6,6 +6,10 @@
   padding-left: 20px;
 }
 
+.inday-list > h2 {
+  margin: 0;
+}
+
 .inday-list::before {
   content: "";
   height: 6px;
@@ -20,12 +24,35 @@
   outline: 3px solid white;
 }
 
-.inday-list > ul > li:not(:last-child) {
+.inday-list ul > li:not(:last-child) {
   margin-bottom: 10px;
 }
 
-.inday-list > ul {
+.inday-list ul {
   padding: 0;
   list-style: none;
-  margin-left: 20px;
+  overflow: hidden;
+}
+
+.inday-list > div {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+  padding: 20px;
+}
+
+.inday-list:hover > div {
+  grid-template-rows: 1fr;
+}
+
+.inday-list:hover::before {
+  background-color: #d4af37;
+}
+
+.active > div {
+  grid-template-rows: 1fr;
+}
+
+.active::before {
+  background-color: #d4af37;
 }

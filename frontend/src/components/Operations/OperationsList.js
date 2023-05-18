@@ -22,7 +22,7 @@ const OperationsList = ({ inDaysOperations }) => {
   // }
 
   return (
-    <div>
+    <div className={classes["operations"]}>
       <ul className={classes["operations-list"]}>
         {inDaysOperations.map((iDO) => (
           <InDayOperations key={iDO.day} iDO={iDO} />
