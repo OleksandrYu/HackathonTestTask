@@ -28,19 +28,19 @@ import classes from "./OperationsPage.module.css";
 
 const OperationsPage = () => {
   const [inDaysOperations] = useState(useLoaderData());
-  // const [filter, setFilter] = useState(() => {
-  //   return (obj) => obj;
-  // });
+  const [filter, setFilter] = useState(() => {
+    return (obj) => obj;
+  });
 
-  // const filteredOperations = filter(operations);
+  const filteredInDaysOperations = filter(inDaysOperations);
 
   return (
     <>
       <h1>Operations page</h1>
       <Link to="new">New</Link>
       {/* <div className={classes["operations-content"]}> */}
-      <OperationsList inDaysOperations={inDaysOperations} />
-      {/* <OperationsNavigationPanel changeFilter={setFilter} /> */}
+      <OperationsNavigationPanel changeFilter={setFilter} />
+      <OperationsList inDaysOperations={filteredInDaysOperations} />
       {/* </div> */}
     </>
   );

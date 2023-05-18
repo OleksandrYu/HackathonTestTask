@@ -25,11 +25,11 @@
 
 .container:has(input:focus) .placeholder {
   font-size: 12px;
-  transform: translateY(-12px);
+  transform: translateY(-13px);
   color: #d4af37;
 }
 
 .active-label {
   font-size: 12px;
-  transform: translateY(-12px);
+  transform: translateY(-13px);
 }

@@ -1,7 +1,10 @@
 .panel {
+  padding: 40px 20px;
   margin-bottom: 10px;
+  background: #142241;
+  display: flex;
 }
 
-.panel > h2 {
-  margin: 0;
+.panel > *:not(:last-child) {
+  margin-right: 10px;
 }
