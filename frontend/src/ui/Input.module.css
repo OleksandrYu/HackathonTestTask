@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+}
+
+.placeholder {
+  position: absolute;
+  font-size: 18px;
+  transition: font-size 300ms, transform 300ms, color 300ms;
+  color: white;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: white;
+  transition: border-color 300ms;
+  padding-bottom: 5px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.container:has(input:focus) .placeholder {
+  font-size: 12px;
+  transform: translateY(-12px);
+  color: #d4af37;
+}
+
+.active-label {
+  font-size: 12px;
+  transform: translateY(-12px);
+}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../ui/Card";
 
 import classes from "./OperationForm.module.css";
+import Input from "../../ui/Input";
 
 const OperationForm = () => {
   const [title, setTitle] = useState("");
