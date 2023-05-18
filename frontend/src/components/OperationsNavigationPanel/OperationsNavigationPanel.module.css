@@ -1,10 +1,28 @@
 .panel {
   padding: 40px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   background: #142241;
   display: flex;
+  flex-wrap: wrap;
+  color: white;
+  border-radius: 15px;
 }
 
 .panel > *:not(:last-child) {
   margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.amount-container {
+  display: flex;
+}
+
+.amount-container > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.date-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
 }

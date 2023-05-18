@@ -1,9 +1,11 @@
 import OperationsList from "../components/Operations/OperationsList";
 import { Link, useLoaderData } from "react-router-dom";
 import OperationsNavigationPanel from "../components/OperationsNavigationPanel/OperationsNavgitaionPanel";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import classes from "./OperationsPage.module.css";
+import Button from "../ui/Button";
+import OperationActions from "../components/OperationsActions/OperationsActions";
 
 // const dummyOperations = [
 //   {
@@ -28,18 +30,27 @@ import classes from "./OperationsPage.module.css";
 
 const OperationsPage = () => {
   const [inDaysOperations] = useState(useLoaderData());
+  const [isFiltersOn, setIsFiltersOn] = useState(false);
   const [filter, setFilter] = useState(() => {
     return (obj) => obj;
   });
+
+  useEffect(() => {
+    setFilter(() => {
+      return (obj) => obj;
+    });
+  }, [isFiltersOn]);
 
   const filteredInDaysOperations = filter(inDaysOperations);
 
   return (
     <>
       <h1>Operations page</h1>
-      <Link to="new">New</Link>
+      <OperationActions
+        filtersController={() => setIsFiltersOn((prev) => !prev)}
+      />
       {/* <div className={classes["operations-content"]}> */}
-      <OperationsNavigationPanel changeFilter={setFilter} />
+      {isFiltersOn && <OperationsNavigationPanel changeFilter={setFilter} />}
       <OperationsList inDaysOperations={filteredInDaysOperations} />
       {/* </div> */}
     </>
