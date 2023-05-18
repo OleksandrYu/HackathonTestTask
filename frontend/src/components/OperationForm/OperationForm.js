@@ -22,11 +22,12 @@ const OperationForm = () => {
       amount: amount,
       description: description,
     };
-    console.log(operation);
-    console.log(JSON.stringify(operation));
     await fetch("http://localhost:8000/api/operations", {
       method: "POST",
       body: JSON.stringify(operation),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     navigate("/operations");
   };
