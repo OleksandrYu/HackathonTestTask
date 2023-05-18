@@ -1,0 +1,24 @@
+.drop_down{
+    background-color: transparent;
+    border:none;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 16px;
+    transition: border-color 300ms;
+}
+
+.drop_down:focus{
+    outline: none;
+    border-color: #d4af37;
+}
+
+.option{
+    background-color: #142241;
+    color: white;
+    transition: 300ms;
+}
+
+.option:hover{
+    background-color: #21396c;
+    color: #d4af37;
+}

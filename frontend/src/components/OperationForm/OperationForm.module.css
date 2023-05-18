@@ -1,21 +1,54 @@
-.form-field-container {
-  display: flex;
-  align-content: flex-start;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.form-field-container > :nth-child(2) {
-  margin-left: auto;
-}
-
-.form-container {
-  width: 50vw;
-  margin: 0 auto;
-  position: relative;
+@keyframes appearance {
+  0%{
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  100%{
+    opacity: 100%;
+    transform: translateY(0);
+  }
 }
 
 .form {
-  width: 50%;
-  margin: 0 auto;
+  animation-name: appearance;
+  animation-duration: 500ms;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: #142241;
+  padding: 50px;
+  gap: 40px;
+  margin: 0 70px;
 }
+
+.dateInput{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  transition: border-color 300ms;
+  font-size: 16px;
+  color: white
+}
+
+.dateInput:focus{
+  outline: none;
+  border-color: #d4af37;
+}
+
+
+/*.form-field-container > :nth-child(2) {*/
+/*  margin-left: auto;*/
+/*}*/
+
+/*.form-container {*/
+/*  width: 50vw;*/
+/*  margin: 0 auto;*/
+/*  position: relative;*/
+/*}*/
+
+/*.form {*/
+/*  width: 50%;*/
+/*  margin: 0 auto;*/
+/*}*/

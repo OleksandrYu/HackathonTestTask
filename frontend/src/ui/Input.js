@@ -10,7 +10,7 @@ const Input = (props) => {
     if (props.onChange) {
       props.onChange(value);
     }
-    if (value != "") {
+    if (value !== "") {
       setIsFilled(true);
       return;
     }
@@ -29,6 +29,7 @@ const Input = (props) => {
         type={props.type}
         className={classes.input}
         onChange={inputChangeHandler}
+        required
       ></input>
     </div>
   );
