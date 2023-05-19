@@ -2,6 +2,14 @@
   padding: 10px 20px;
   background-color: #142241;
   color: white;
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  outline: white 5px solid;
 }
 
 .main-nav > ul {

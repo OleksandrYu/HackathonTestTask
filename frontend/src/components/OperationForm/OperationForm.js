@@ -1,52 +1,76 @@
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import styles from './OperationForm.module.css';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./OperationForm.module.css";
 import Input from "../../ui/Input";
 import DropDown from "../../ui/DropDown";
 import TextArea from "../../ui/TextArea";
+import Button from "../../ui/Button";
 
-const operationType = [
-    'Food',
-    'Clothes',
-    'Medicine',
-    'Bills',
-    'Petrol etc'
-]
+const operationType = ["Food", "Clothes", "Medicine", "Bills", "Petrol etc"];
 const OperationForm = () => {
-    const [title, setTitle] = useState("");
-    const [date, setDate] = useState(new Date());
-    const [amount, setAmount] = useState(0);
-    const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [amount, setAmount] = useState(0);
+  const [description, setDescription] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const formSubmitHandler = async (event) => {
-        event.preventDefault();
-        const operation = {
-            id: Math.random(),
-            title: title,
-            date: date.toISOString().substring(0, 10),
-            amount: amount,
-            description: description,
-        };
-        await fetch("http://localhost:8000/api/operations", {
-            method: "POST",
-            body: JSON.stringify(operation),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        navigate("/operations");
+  const formSubmitHandler = async (event) => {
+    event.preventDefault();
+    const operation = {
+      id: Math.random(),
+      title: title,
+      date: date.toISOString().substring(0, 10),
+      amount: amount,
+      description: description,
     };
+    await fetch("http://localhost:8000/api/operations", {
+      method: "POST",
+      body: JSON.stringify(operation),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    navigate("/operations/single");
+  };
 
-    return <form className={styles.form} onSubmit={formSubmitHandler}>
-        <h1 style = {{color: "white"}}> Add your spending</h1>
-        <Input type = "text" placeholder="Title" onChange = {(e) => {setTitle(e.target.value)}}/>
-        <Input type = "number" placeholder="Amount" onChange = {(e) => {setAmount(e.target.value)}}/>
-        <DropDown options = {operationType}/>
-        <input type = "date" className={styles.dateInput} onChange={(e) => {setDate(new Date(e.target.value))}}/>
-        <TextArea placeholder = "Description" onChange = {(e) => {setDescription(e.target.value)}}/>
+  return (
+    <form className={styles.form} onSubmit={formSubmitHandler}>
+      <h1 style={{ color: "white" }}> Add your spending</h1>
+      <Input
+        type="text"
+        placeholder="Title"
+        onChange={(value) => {
+          setTitle(value);
+        }}
+      />
+      <Input
+        type="number"
+        placeholder="Amount"
+        onChange={(value) => {
+          setAmount(value);
+        }}
+      />
+      <DropDown options={operationType} />
+      <input
+        type="date"
+        className={styles.dateInput}
+        onChange={(e) => {
+          setDate(new Date(e.target.value));
+        }}
+      />
+      <TextArea
+        placeholder="Description"
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      />
+      <div className={styles.actions}>
+        <Button type="submit">Add</Button>
+        <Button onClick={() => navigate("/operations/single")}>Back</Button>
+      </div>
     </form>
+  );
 };
 
 export default OperationForm;

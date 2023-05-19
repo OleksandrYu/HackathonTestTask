@@ -1,42 +1,41 @@
-@keyframes appearance {
-  0%{
-    opacity: 0;
-    transform: translateY(-3rem);
-  }
-  100%{
-    opacity: 100%;
-    transform: translateY(0);
-  }
-}
-
 .form {
-  animation-name: appearance;
-  animation-duration: 500ms;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-content: center;
   justify-content: center;
   border-radius: 20px;
   background-color: #142241;
   padding: 50px;
-  gap: 40px;
-  margin: 0 70px;
+  gap: 30px;
 }
 
-.dateInput{
+.dateInput {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid white;
   transition: border-color 300ms;
   font-size: 16px;
-  color: white
+  color: white;
 }
 
-.dateInput:focus{
+.dateInput:focus {
   outline: none;
-  border-color: #d4af37;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.actions {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions > *:not(last-child) {
+  margin-right: 10px;
+}
 
 /*.form-field-container > :nth-child(2) {*/
 /*  margin-left: auto;*/

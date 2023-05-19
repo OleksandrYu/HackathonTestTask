@@ -1,5 +1,7 @@
 .container {
   position: relative;
+  border-bottom: 1px solid white;
+  transition: border-color 300ms;
 }
 
 .placeholder {
@@ -10,16 +12,20 @@
 }
 
 .input {
+  position: relative;
   border: none;
-  border-bottom: 1px solid white;
   background-color: transparent;
   color: white;
-  transition: border-color 300ms;
+
   font-size: 15px;
+  width: 100%;
 }
 
 .input:focus {
   outline: none;
+}
+
+.container:has(.input:focus) {
   border-color: #d4af37;
 }
 

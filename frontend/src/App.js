@@ -3,7 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
-import OperationsPage, { load as operationsLoad } from "./pages/OperationsPage";
+import SingleOperationsPage, {
+  load as operationsLoad,
+} from "./pages/SingleOperationsPage";
 import OperationDetailPage, {
   load as OperationDetailLoad,
 } from "./pages/OperationDetailPage";
@@ -11,6 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
 import AboutPage from "./pages/AboutPage";
+import OperationsPage from "./pages/OperationsPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -23,15 +26,19 @@ const App = () => {
         {
           path: "operations",
           element: <OperationsPage />,
+        },
+        {
+          path: "operations/single",
+          element: <SingleOperationsPage />,
           loader: operationsLoad,
         },
         { path: "about", element: <AboutPage /> },
         {
-          path: "operations/:id",
+          path: "operations/single/:id",
           element: <OperationDetailPage />,
           loader: OperationDetailLoad,
         },
-        { path: "operations/new", element: <NewOperationPage /> },
+        { path: "operations/single/new", element: <NewOperationPage /> },
       ],
     },
     { path: "/login", element: <LoginPage /> },

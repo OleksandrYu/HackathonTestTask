@@ -1,3 +1,19 @@
+@keyframes appearance {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+.main-content > * {
+  animation-name: appearance;
+  animation-duration: 500ms;
+}
+
 @media screen and (min-width: 1200px) {
   .main-content {
     max-width: 800px;

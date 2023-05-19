@@ -4,6 +4,8 @@
   background-color: #142241;
   border: none;
   border-radius: 10px;
+  font-size: 18px;
+  transition: background-color 300ms;
 }
 
 .button:hover {
