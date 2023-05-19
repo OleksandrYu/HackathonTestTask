@@ -12,8 +12,7 @@
 
 .operation-title {
   font-size: 24px;
-  margin: 0;
-  margin-bottom: 5px;
+  margin: 0 0 5px;
 }
 
 .operation-date {
@@ -25,4 +24,12 @@
 .operation-link {
   text-decoration: none;
   position: relative;
+}
+
+.income{
+  color: #57D054;
+}
+
+.spending{
+  color: #ed476e;
 }

@@ -1,0 +1,11 @@
+.statement{
+    font-size: 25px;
+    transition: 300ms;
+    cursor: default;
+    color: #d4af37;
+}
+
+.details{
+    padding-left: 20px;
+    font-size: 17px;
+}

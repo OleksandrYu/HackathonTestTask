@@ -13,7 +13,7 @@ const OperationItem = ({ operation }) => {
             <h2 className={classes["operation-title"]}>{operation.title}</h2>
             <p className={classes["operation-date"]}>{operation.date}</p>
           </div>
-          <span>{operation.amount}</span>
+          <span className={+operation.amount > 0 ? classes.income : classes.spending}>{operation.amount}</span>
         </Card>
       </Link>
     </li>
