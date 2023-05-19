@@ -1,0 +1,69 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    background-position: center;
+    background-image: url("../../assets/backgrounds/userBackground.svg");
+    background-size: cover;
+    border-radius: 20px;
+    padding: 50px;
+    margin: 10px;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    /*backdrop-filter: blur(5px);*/
+}
+
+.user_icon{
+    width: 130px;
+}
+
+.user_info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    gap: 10px;
+}
+
+.title{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: rgba(0, 0, 0, 0.25) 2px 5px 3px;
+    margin: 0;
+}
+
+.mail{
+    margin: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: lighter;
+    text-shadow: rgba(0, 0, 0, 0.25) 2px 5px 3px;
+}
+
+.stats_wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.user_stats{
+    margin-top: 15px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.stats_title{
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.stats_description{
+    margin: 0;
+    font-size: 15px;
+    font-weight: lighter;
+    color: white;
+}
