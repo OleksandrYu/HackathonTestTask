@@ -2,8 +2,7 @@ const models = require("../models/db/Models");
 const Sequelize = require("sequelize");
 
 exports.getOneOperation = async (req, res, next) => {
-  const id = req.params.id;
-  //const email = req.user.email;
+  const email = req.user.email;
   const operations = await models.userinfo.findOne({
     attributes: ["email", "id"],
     include: [
@@ -30,7 +29,7 @@ exports.getOneOperation = async (req, res, next) => {
 };
 
 exports.getAllOperation = async (req, res, next) => {
-  //const email = req.user.email;
+  const email = req.user.email;
   const operations = await models.userinfo.findOne({
     attributes: ["email", "id"],
     include: [
@@ -47,7 +46,7 @@ exports.getAllOperation = async (req, res, next) => {
         ],
       },
     ],
-    //where: { email: email },
+    where: { email: email },
   });
 
   if (!operations) res.status(141).json({ error: "sho za precoly" });
@@ -78,20 +77,20 @@ exports.getAllOperation = async (req, res, next) => {
 };
 
 exports.postAddOperation = async (req, res, next) => {
-  //const email = req.user.email;
+  const email = req.user.email;
   const body = req.body;
 
   if (!body.description || !body.title || !body.date || !body.amount)
     res.status(133).json({ error: "sho za precoly" });
 
-  // const user = await models.userinfo.findOne({
-  //   attributes: ["id"],
-  //   where: { email: email },
-  // });
+  const user = await models.userinfo.findOne({
+    attributes: ["id"],
+    where: { email: email },
+  });
 
   await models.single_operation.create({
     ...body,
-    // user_id: user.id,
+    user_id: user.id,
     user_id: 1,
     goal_id: 1,
     status_id: 1,
