@@ -60,7 +60,7 @@ const SingleOperationsPage = () => {
 export default SingleOperationsPage;
 
 export const load = async () => {
-  const operations = await fetch(`http://${process.env.CONNECTION_HOST}:${process.env.PORT}/api/operations`).then(
+  const operations = await fetch(`/api/operations`).then(
     (data) => data.json()
   );
   //console.log(operations);

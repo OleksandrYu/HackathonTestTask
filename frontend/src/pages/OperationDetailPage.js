@@ -16,7 +16,7 @@ export default OperationDetailPage;
 
 export const load = async ({ params }) => {
   const operation = await fetch(
-    `http://${process.env.CONNECTION_HOST}:${process.env.PORT}/api/operations/${params.id}`
+    `/api/operations/${params.id}`
   ).then((data) => data.json());
 
   return operation;

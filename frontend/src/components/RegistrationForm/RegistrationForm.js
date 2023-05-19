@@ -19,7 +19,7 @@ const RegistrationForm = () => {
       password: password,
     };
 
-    const result = await fetch(`http://${process.env.CONNECTION_HOST}:${process.env.PORT}/api/registration`, {
+    const result = await fetch(`/api/registration`, {
       method: "POST",
       body: JSON.stringify(user),
     });

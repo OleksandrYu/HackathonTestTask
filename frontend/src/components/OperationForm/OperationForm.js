@@ -23,7 +23,7 @@ const OperationForm = () => {
       amount: amount,
       description: description,
     };
-    await fetch(`http://${process.env.CONNECTION_HOST}:${process.env.PORT}/api/operations`, {
+    await fetch(`/api/operations`, {
       method: "POST",
       body: JSON.stringify(operation),
       headers: {
