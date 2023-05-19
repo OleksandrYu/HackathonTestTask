@@ -94,6 +94,6 @@ exports.postAddOperation = async (req, res, next) => {
     goal_id: 1,
     status_id: 1,
   });
-
+  console.log(user.id)
   res.json({ result: "success" });
 };
