@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, './dist')));
 
-app.use("/api", operationRoute);
+app.use("/api",authMiddleware, operationRoute);
 
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, './dist/index.html'));
