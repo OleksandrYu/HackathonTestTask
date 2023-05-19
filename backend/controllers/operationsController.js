@@ -1,4 +1,4 @@
-const models = require('../models/db/models')
+const models = require('../models/db/Models')
 const Sequelize = require('sequelize');
 
 exports.getOneOperation = async (req, res, next) => {
@@ -6,8 +6,7 @@ exports.getOneOperation = async (req, res, next) => {
 };
 
 exports.getAllOperation = async (req, res, next) => {
-  const email = req.params.email;
-
+  const email = req.user.email;
   const opearations = await models.userinfo.findOne({
     attributes: ['email', 'id'],
     include: [
@@ -33,7 +32,7 @@ exports.getAllOperation = async (req, res, next) => {
 };
 
 exports.postAddOperation = async (req, res, next) => {
-  const email = req.params.email;
+    const email = req.user.email;
   const body = req.body;
   
   if (!body.description || !body.title || !body.date || !body.amount)
@@ -46,7 +45,9 @@ exports.postAddOperation = async (req, res, next) => {
   
   await models.single_operation.create({
     ...body,
-    user_id: user.id
+    user_id: user.id,
+    goal_id: 1,
+    status_id :1
   });
 
   res.json({ result: "success" });

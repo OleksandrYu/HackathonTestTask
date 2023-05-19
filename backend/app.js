@@ -1,4 +1,6 @@
 const operationRoute = require("./routes/operations");
+const authRoute = require('./routes/authorization')
+const authMiddleware = require('./controllers/authMiddleware')
 const { Sequelize } = require('sequelize');
 const express = require("express");
 const dotenv = require("dotenv");
@@ -16,7 +18,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api", operationRoute);
+
+app.use("/api", authRoute)
+
+app.use("/api",authMiddleware, operationRoute);
 
 app.use("/", (req, res) => {
   res.json({ message: "Endpoint not valid" });

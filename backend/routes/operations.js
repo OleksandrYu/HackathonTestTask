@@ -5,8 +5,8 @@ const router = express.Router();
 
 // router.get('/operations/:id', operationsController.getOneOperation)
 
-router.get('/operations/:email', operationsController.getAllOperation);
+router.get('/operations/', operationsController.getAllOperation);
 
-router.post('/operations/:email', operationsController.postAddOperation)
+router.post('/operations/', operationsController.postAddOperation)
 
 module.exports  = router
