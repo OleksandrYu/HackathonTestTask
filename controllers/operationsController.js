@@ -46,7 +46,7 @@ exports.getAllOperation = async (req, res, next) => {
         ],
       },
     ],
-    where: { email: email },
+   where: { email:  email},
   });
 
   if (!operations) res.status(141).json({ error: "sho za precoly" });
@@ -91,7 +91,6 @@ exports.postAddOperation = async (req, res, next) => {
   await models.single_operation.create({
     ...body,
     user_id: user.id,
-    user_id: 1,
     goal_id: 1,
     status_id: 1,
   });
