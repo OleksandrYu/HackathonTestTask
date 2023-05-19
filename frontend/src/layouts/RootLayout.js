@@ -1,6 +1,7 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, redirect, useNavigate } from "react-router-dom";
 
 import MainNavigation from "../components/MainNavigation/MainNavigation";
+import getToken from "../util/GetToken";
 
 import classes from "./RootLayout.module.css";
 
@@ -16,3 +17,12 @@ const RootLayout = () => {
 };
 
 export default RootLayout;
+
+export function loader() {
+  const token = getToken();
+  if (!token) {
+    console.log(".........");
+    return redirect("/registration");
+  }
+  return null;
+}

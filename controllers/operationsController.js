@@ -3,34 +3,30 @@ const Sequelize = require("sequelize");
 
 exports.getOneOperation = async (req, res, next) => {
   const id = req.params.id;
-  //const email = req.user.email;
-  const operations = await models.userinfo.findOne({
-    attributes: ["email", "id"],
+  const email = req.user.email;
+  const operation = await models.single_operation.findOne({
+    attributes: ["id", "description", "title", "date", "amount"],
+
     include: [
       {
-        model: models.single_operation,
-        as: "single_operations",
-        attributes: ["id", "description", "title", "date", "amount"],
-
-        include: [
-          {
-            model: models.goal,
-            as: "goal",
-            attributes: ["name"],
-          },
-        ],
+        model: models.goal,
+        as: "goal",
+        attributes: ["name"],
       },
     ],
+    where: {
+      id: +id,
+    },
   });
 
-  if (!operations) res.status(141).json({ error: "sho za precoly" });
+  console.log(operation);
 
-  const operation = operations.single_operations.filter((x) => x.id == +id)[0];
+  if (!operation) res.status(141).json({ error: "sho za precoly" });
   return res.json(operation);
 };
 
 exports.getAllOperation = async (req, res, next) => {
-  //const email = req.user.email;
+  const email = req.user.email;
   const operations = await models.userinfo.findOne({
     attributes: ["email", "id"],
     include: [
@@ -47,7 +43,7 @@ exports.getAllOperation = async (req, res, next) => {
         ],
       },
     ],
-    //where: { email: email },
+    where: { email: email },
   });
 
   if (!operations) res.status(141).json({ error: "sho za precoly" });
@@ -78,24 +74,23 @@ exports.getAllOperation = async (req, res, next) => {
 };
 
 exports.postAddOperation = async (req, res, next) => {
-  //const email = req.user.email;
+  const email = req.user.email;
   const body = req.body;
 
   if (!body.description || !body.title || !body.date || !body.amount)
     res.status(133).json({ error: "sho za precoly" });
 
-  // const user = await models.userinfo.findOne({
-  //   attributes: ["id"],
-  //   where: { email: email },
-  // });
+  const user = await models.userinfo.findOne({
+    attributes: ["id"],
+    where: { email: email },
+  });
 
   await models.single_operation.create({
     ...body,
-    // user_id: user.id,
-    user_id: 1,
+    user_id: user.id,
     goal_id: 1,
     status_id: 1,
   });
-
+  console.log(user.id);
   res.json({ result: "success" });
 };

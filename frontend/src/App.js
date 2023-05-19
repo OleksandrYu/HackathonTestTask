@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import RootLayout from "./layouts/RootLayout";
+import RootLayout, { loader as rootLoader } from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import SingleOperationsPage, {
@@ -9,8 +9,8 @@ import SingleOperationsPage, {
 import OperationDetailPage, {
   load as OperationDetailLoad,
 } from "./pages/OperationDetailPage";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage, { action as loginAction } from "./pages/LoginPage";
+import RegistrationPage, { action } from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
 import AboutPage from "./pages/AboutPage";
 import OperationsPage from "./pages/OperationsPage";
@@ -22,11 +22,12 @@ const App = () => {
       path: "/",
       element: <RootLayout />,
       children: [
-        { path: "", element: <HomePage /> },
-        { path: "user", element: <UserPage /> },
+        { path: "", element: <HomePage />, loader: rootLoader },
+        { path: "user", element: <UserPage />, loader: rootLoader },
         {
           path: "operations",
           element: <OperationsPage />,
+          loader: rootLoader,
         },
         {
           path: "analytics",
@@ -38,7 +39,7 @@ const App = () => {
           element: <SingleOperationsPage />,
           loader: operationsLoad,
         },
-        { path: "about", element: <AboutPage /> },
+        { path: "about", element: <AboutPage />, loader: rootLoader },
         {
           path: "operations/single/:id",
           element: <OperationDetailPage />,
@@ -47,8 +48,8 @@ const App = () => {
         { path: "operations/single/new", element: <NewOperationPage /> },
       ],
     },
-    { path: "/login", element: <LoginPage /> },
-    { path: "/registration", element: <RegistrationPage /> },
+    { path: "/login", element: <LoginPage />, action: loginAction },
+    { path: "/registration", element: <RegistrationPage />, action: action },
   ]);
 
   return <RouterProvider router={router}></RouterProvider>;

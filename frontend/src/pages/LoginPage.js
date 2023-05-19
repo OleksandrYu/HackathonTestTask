@@ -1,5 +1,7 @@
 import LoginForm from "../components/LoginForm/LoginForm";
 
+import { redirect } from "react-router-dom";
+
 const LoginPage = () => {
   return (
     <>
@@ -10,3 +12,28 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+export async function action({ request }) {
+  const data = await request.formData();
+  const user = {
+    login: data.get("login"),
+    email: data.get("email"),
+    password: data.get("password"),
+  };
+
+  const response = await fetch("http://localhost:3001/api/login", {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const token = (await response.json()).token;
+  localStorage.setItem("token", token);
+  return redirect("/");
+}
