@@ -21,7 +21,6 @@ exports.getOneOperation = async (req, res, next) => {
           ]
         },
       ],
-      where: { email: email },
     });
   
     if (!operations) res.status(141).json({ error: "sho za precoly" });
@@ -48,7 +47,7 @@ exports.getAllOperation = async (req, res, next) => {
           ]
         },
       ],
-      where: { email: email },
+      //where: { email: email },
     });
   
     if (!operations) res.status(141).json({ error: "sho za precoly" });
