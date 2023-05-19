@@ -37,7 +37,7 @@ exports.getAllOperation = async (req, res, next) => {
       {
         model: models.single_operation,
         as: "single_operations",
-        attributes: ["description", "title", "date", "amount"],
+        attributes: ["description", "title", "date", "amount", "id"],
         include: [
           {
             model: models.goal,
