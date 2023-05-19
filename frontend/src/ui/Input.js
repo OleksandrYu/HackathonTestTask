@@ -29,6 +29,7 @@ const Input = (props) => {
         type={props.type}
         className={classes.input}
         onChange={inputChangeHandler}
+        name={props.name}
         required
       ></input>
     </div>
