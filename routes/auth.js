@@ -6,12 +6,8 @@ const router = express.Router();
 
 // router.get('/operations/:id', operationsController.getOneOperation)
 
+router.post('/login/', authController.login);
 
-
-router.get('/operations/:id', operationsController.getOneOperation);
-
-router.get('/operations/', operationsController.getAllOperation);
-
-router.post('/operations/', operationsController.postAddOperation)
+router.post('/register/', authController.registration)
 
 module.exports  = router
