@@ -16,7 +16,7 @@ export default OperationDetailPage;
 
 export const load = async ({ params }) => {
   const operation = await fetch(
-    `http://localhost:8000/api/operations/${params.id}`
+    `http://localhost:3001/api/operations/${params.id}`
   ).then((data) => data.json());
 
   return operation;

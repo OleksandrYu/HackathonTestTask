@@ -60,7 +60,7 @@ const SingleOperationsPage = () => {
 export default SingleOperationsPage;
 
 export const load = async () => {
-  const operations = await fetch("http://localhost:8000/api/operations").then(
+  const operations = await fetch("http://localhost:3001/api/operations").then(
     (data) => data.json()
   );
   //console.log(operations);

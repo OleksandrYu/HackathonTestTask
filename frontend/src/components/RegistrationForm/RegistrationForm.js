@@ -19,7 +19,7 @@ const RegistrationForm = () => {
       password: password,
     };
 
-    const result = await fetch("http://localhost:8000/api/registration", {
+    const result = await fetch(`http://localhost:3001/api/registration`, {
       method: "POST",
       body: JSON.stringify(user),
     });
