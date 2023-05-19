@@ -2,30 +2,26 @@ const models = require("../models/db/Models");
 const Sequelize = require("sequelize");
 
 exports.getOneOperation = async (req, res, next) => {
-  const id = req.params.id
+  const id = req.params.id;
   const email = req.user.email;
-  const operations = await models.userinfo.findOne({
-    attributes: ["email", "id"],
+  const operation = await models.single_operation.findOne({
+    attributes: ["id", "description", "title", "date", "amount"],
+
     include: [
       {
-        model: models.single_operation,
-        as: "single_operations",
-        attributes: ["id", "description", "title", "date", "amount"],
-
-        include: [
-          {
-            model: models.goal,
-            as: "goal",
-            attributes: ["name"],
-          },
-        ],
+        model: models.goal,
+        as: "goal",
+        attributes: ["name"],
       },
     ],
+    where: {
+      id: +id,
+    },
   });
 
-  if (!operations) res.status(141).json({ error: "sho za precoly" });
-console.log('asd')
-  const operation = operations.single_operations.filter((x) => x.id == +id)[0];
+  console.log(operation);
+
+  if (!operation) res.status(141).json({ error: "sho za precoly" });
   return res.json(operation);
 };
 
@@ -47,7 +43,7 @@ exports.getAllOperation = async (req, res, next) => {
         ],
       },
     ],
-   where: { email:  email},
+    where: { email: email },
   });
 
   if (!operations) res.status(141).json({ error: "sho za precoly" });
@@ -95,6 +91,6 @@ exports.postAddOperation = async (req, res, next) => {
     goal_id: 1,
     status_id: 1,
   });
-  console.log(user.id)
+  console.log(user.id);
   res.json({ result: "success" });
 };

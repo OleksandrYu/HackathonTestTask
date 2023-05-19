@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./OperationsPage.module.css";
 import Button from "../ui/Button";
 import OperationActions from "../components/OperationsActions/OperationsActions";
+import getToken from "../util/GetToken";
 
 // const dummyOperations = [
 //   {
@@ -60,9 +61,11 @@ const SingleOperationsPage = () => {
 export default SingleOperationsPage;
 
 export const load = async () => {
-  const operations = await fetch(`http://localhost:3001/api/operations`).then(
-    (data) => data.json()
-  );
+  const operations = await fetch(`http://localhost:3001/api/operations`, {
+    headers: {
+      Authorization: "Barer " + getToken(),
+    },
+  }).then((data) => data.json());
   //console.log(operations);
   return operations;
 };

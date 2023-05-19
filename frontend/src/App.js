@@ -9,7 +9,7 @@ import SingleOperationsPage, {
 import OperationDetailPage, {
   load as OperationDetailLoad,
 } from "./pages/OperationDetailPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage, { action as loginAction } from "./pages/LoginPage";
 import RegistrationPage, { action } from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
 import AboutPage from "./pages/AboutPage";
@@ -48,7 +48,7 @@ const App = () => {
         { path: "operations/single/new", element: <NewOperationPage /> },
       ],
     },
-    { path: "/login", element: <LoginPage /> },
+    { path: "/login", element: <LoginPage />, action: loginAction },
     { path: "/registration", element: <RegistrationPage />, action: action },
   ]);
 

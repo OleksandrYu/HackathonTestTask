@@ -5,6 +5,7 @@ import Input from "../../ui/Input";
 import DropDown from "../../ui/DropDown";
 import TextArea from "../../ui/TextArea";
 import Button from "../../ui/Button";
+import getToken from "../../util/GetToken";
 
 const operationType = ["Food", "Clothes", "Medicine", "Bills", "Petrol etc"];
 const OperationForm = () => {
@@ -23,11 +24,12 @@ const OperationForm = () => {
       amount: amount,
       description: description,
     };
-    await fetch(`/api/operations`, {
+    await fetch(`http://localhost:3001/api/operations`, {
       method: "POST",
       body: JSON.stringify(operation),
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Barer " + getToken(),
       },
     });
     navigate("/operations/single");
