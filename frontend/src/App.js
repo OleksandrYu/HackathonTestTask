@@ -14,6 +14,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import NewOperationPage from "./pages/NewOperationPage";
 import AboutPage from "./pages/AboutPage";
 import OperationsPage from "./pages/OperationsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -26,6 +27,11 @@ const App = () => {
         {
           path: "operations",
           element: <OperationsPage />,
+        },
+        {
+          path: "analytics",
+          element: <AnalyticsPage />,
+          loader: operationsLoad,
         },
         {
           path: "operations/single",

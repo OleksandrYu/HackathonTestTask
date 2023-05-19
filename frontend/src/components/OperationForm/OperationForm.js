@@ -67,7 +67,9 @@ const OperationForm = () => {
       />
       <div className={styles.actions}>
         <Button type="submit">Add</Button>
-        <Button onClick={() => navigate("/operations/single")}>Back</Button>
+        <Button type="button" onClick={() => navigate("/operations/single")}>
+          Back
+        </Button>
       </div>
     </form>
   );

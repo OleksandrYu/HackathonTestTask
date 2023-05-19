@@ -21,7 +21,7 @@ const HomeResources = () => {
           </div>
         </div>
       </Link>
-      <Link className={classes["analytics"]}>
+      <Link to="analytics" className={classes["analytics"]}>
         <h2>Analytics</h2>
         <div className={classes["description"]}>
           <div>
