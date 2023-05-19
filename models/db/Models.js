@@ -3,6 +3,8 @@ const initModels = require('./init-models')
 const dotenv = require("dotenv");
 dotenv.config();
 
+const DATABASE_URL = process.env.DATABASE_URL;
+
 const getModels = async () => {
 
   const sequelize = new Sequelize(DATABASE_URL);

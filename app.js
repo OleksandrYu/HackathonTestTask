@@ -8,13 +8,7 @@ const path = require('path');
 const bodyParser = require("body-parser");
 dotenv.config();
 
-
 const PORT = process.env.PORT;
-// const CONNECTION_HOST = process.env.CONNECTION_HOST;
-// const CONNECTION_USER = process.env.CONNECTION_USER;
-// const CONNECTION_PWD = process.env.CONNECTION_PWD;
-// const CONNECTION_DB = process.env.CONNECTION_DB;
-const DATABASE_URL = process.env.DATABASE_URL;
 
 const app = express();
 
