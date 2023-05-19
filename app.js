@@ -1,5 +1,4 @@
 const operationRoute = require("./routes/operations");
-const authRoute = require('./routes/authorization')
 const authMiddleware = require('./controllers/authMiddleware')
 const { Sequelize } = require('sequelize');
 const express = require("express");
@@ -21,8 +20,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, './dist')));
-
-app.use("/api", authRoute)
 
 app.use("/api", operationRoute);
 
