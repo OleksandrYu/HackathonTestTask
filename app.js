@@ -1,6 +1,5 @@
 const operationRoute = require("./routes/operations");
 const authMiddleware = require('./controllers/authMiddleware')
-const { Sequelize } = require('sequelize');
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
