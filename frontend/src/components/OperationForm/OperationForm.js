@@ -18,7 +18,6 @@ const OperationForm = () => {
   const formSubmitHandler = async (event) => {
     event.preventDefault();
     const operation = {
-      id: Math.random(),
       title: title,
       date: date.toISOString().substring(0, 10),
       amount: amount,
