@@ -1,47 +1,78 @@
-const { json } = require("body-parser");
-const Operation = require("../models/operation");
+const models = require('../models/db/Models')
+const Sequelize = require('sequelize');
 
-exports.getOneOperation = (req, res, next) => {
-  Operation.fetchAll((operations) => {
-    const element = operations.filter((i) => i.id == req.params.id);
-    if (element.length < 1) {
-      res.status(404).json({ message: "not found" });
-    }
-
-    res.status(200).json(element[0]);
-  });
+exports.getOneOperation = async (req, res, next) => {
+    const id = req.params.id
+    const email = req.user.email;
+    const opearations = await models.userinfo.findOne({
+      attributes: ['email', 'id'],
+      include: [
+        {
+          model: models.single_operation,
+          as: 'single_operations',
+          attributes: ['description', 'title', 'date', 'amount'],
+          include: [
+            {
+              model: models.goal,
+              as: 'goal',
+              attributes: ['name']
+            }
+          ]
+        },
+      ],
+      where: { email: email },
+      //where: {id : id}
+    });
+  
+    if (!opearations) res.status(141).json({ error: "sho za precoly" });
+  
+    return res.json({ result: opearations });
 };
 
-exports.getAllOperation = (req, res, next) => {
-  Operation.fetchAll((operations) => {
-    const days = operations
-      .map((op) => op.date)
-      .reduce((accum, date) => {
-        const temp = accum;
-        if (!temp.includes(date)) {
-          temp.push(date);
-        }
-        return temp;
-      }, []);
-
-    //console.log(days);
-
-    const inDaysOperations = [];
-    for (var day of days) {
-      inDaysOperations.push({
-        day: day,
-        operations: operations.filter((op) => op.date == day),
-      });
-    }
-
-    inDaysOperations.sort((a, b) => new Date(b.day) - new Date(a.day));
-
-    res.json(inDaysOperations);
-  });
+exports.getAllOperation = async (req, res, next) => {
+    const email = req.user.email;
+    const opearations = await models.userinfo.findOne({
+      attributes: ['email', 'id'],
+      include: [
+        {
+          model: models.single_operation,
+          as: 'single_operations',
+          attributes: ['description', 'title', 'date', 'amount'],
+          include: [
+            {
+              model: models.goal,
+              as: 'goal',
+              attributes: ['name']
+            }
+          ]
+        },
+      ],
+      where: { email: email },
+    });
+  
+    if (!opearations) res.status(141).json({ error: "sho za precoly" });
+  
+    return res.json({ result: opearations.single_operations });
 };
 
-exports.postAddoperaion = (req, res, next) => {
-  const op = new Operation(req.body);
-  op.save();
-  res.status(200).json({ message: "operation saved" });
+exports.postAddOperation = async (req, res, next) => {
+    const email = req.user.email;
+  const body = req.body;
+  
+  if (!body.description || !body.title || !body.date || !body.amount)
+    res.status(133).json({ error: "sho za precoly" });
+  
+    const user = await models.userinfo.findOne({
+    attributes: ['id'],
+    where: { email: email },
+  });
+  
+  await models.single_operation.create({
+    ...body,
+    user_id: user.id,
+    goal_id: 1,
+    status_id :1
+  });
+
+  res.json({ result: "success" });
 };
