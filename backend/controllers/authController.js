@@ -22,7 +22,7 @@ class authController {
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             const user =await usersModel.create({ login: login, email: email, password:hashPassword, name:name });
-
+            const token = generateAccessToken(email)
             return res.json(token)
         } catch (e) {
             console.log(e)
