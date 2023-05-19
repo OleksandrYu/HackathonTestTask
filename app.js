@@ -3,11 +3,10 @@ const authRoute = require('./routes/authorization')
 const authMiddleware = require('./controllers/authMiddleware')
 const { Sequelize } = require('sequelize');
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require('path');
 const bodyParser = require("body-parser");
-dotenv.config();
+
 
 const PORT = process.env.PORT;
 const CONNECTION_HOST = process.env.CONNECTION_HOST;
