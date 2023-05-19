@@ -31,12 +31,5 @@ app.use('*', (req, res) => {
 // Create your .env file after pulling!!!
 
 app.listen(PORT, async () => {
-    const sequelize = new Sequelize(DATABASE_URL);
-    await sequelize.authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-      console.error('Unable to connect to the database:', err);
-    });
+  console.log("Server started")
 });
