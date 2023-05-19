@@ -17,7 +17,7 @@ export default OperationDetailPage;
 
 export const load = async ({ params }) => {
   const operation = await fetch(
-    `http://localhost:3001/api/operations/${params.id}`,
+    `/api/operations/${params.id}`,
     {
       headers: {
         Authorization: "Barer " + getToken(),

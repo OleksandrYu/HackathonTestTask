@@ -22,7 +22,7 @@ export async function action({ request }) {
     password: data.get("password"),
   };
 
-  const response = await fetch("http://localhost:3001/api/register", {
+  const response = await fetch("/api/register", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {

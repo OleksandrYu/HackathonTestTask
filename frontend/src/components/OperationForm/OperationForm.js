@@ -24,7 +24,7 @@ const OperationForm = () => {
       amount: amount,
       description: description,
     };
-    await fetch(`http://localhost:3001/api/operations`, {
+    await fetch(`/api/operations`, {
       method: "POST",
       body: JSON.stringify(operation),
       headers: {

@@ -61,7 +61,7 @@ const SingleOperationsPage = () => {
 export default SingleOperationsPage;
 
 export const load = async () => {
-  const operations = await fetch(`http://localhost:3001/api/operations`, {
+  const operations = await fetch(`/api/operations`, {
     headers: {
       Authorization: "Barer " + getToken(),
     },
