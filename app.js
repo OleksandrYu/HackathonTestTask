@@ -9,12 +9,7 @@ const bodyParser = require("body-parser");
 const authRoute = require('./routes/auth')
 dotenv.config();
 
-
 const PORT = process.env.PORT;
-const CONNECTION_HOST = process.env.CONNECTION_HOST;
-const CONNECTION_USER = process.env.CONNECTION_USER;
-const CONNECTION_PWD = process.env.CONNECTION_PWD;
-const CONNECTION_DB = process.env.CONNECTION_DB;
 
 const app = express();
 
@@ -33,11 +28,5 @@ app.use('*', (req, res) => {
 // Create your .env file after pulling!!!
 
 app.listen(PORT, async () => {
-  // try {
-  //   const sequelize = new Sequelize(`postgres://${CONNECTION_USER}:${CONNECTION_PWD}@${CONNECTION_HOST}:5432/${CONNECTION_DB}`);
-  //   await sequelize.authenticate();
-  //   console.log('success');
-  // } catch (error) {
-  //   console.error('Unable to connect to the database:', error);
-  // }
+  console.log("Server started")
 });
