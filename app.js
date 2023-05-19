@@ -33,11 +33,11 @@ app.use('*', (req, res) => {
 // Create your .env file after pulling!!!
 
 app.listen(PORT, async () => {
-  try {
-    const sequelize = new Sequelize(`postgres://${CONNECTION_USER}:${CONNECTION_PWD}@${CONNECTION_HOST}:5432/${CONNECTION_DB}`);
-    await sequelize.authenticate();
-    console.log('success');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+  // try {
+  //   const sequelize = new Sequelize(`postgres://${CONNECTION_USER}:${CONNECTION_PWD}@${CONNECTION_HOST}:5432/${CONNECTION_DB}`);
+  //   await sequelize.authenticate();
+  //   console.log('success');
+  // } catch (error) {
+  //   console.error('Unable to connect to the database:', error);
+  // }
 });

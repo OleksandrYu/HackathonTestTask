@@ -2,6 +2,7 @@ const models = require("../models/db/Models");
 const Sequelize = require("sequelize");
 
 exports.getOneOperation = async (req, res, next) => {
+  const id = req.params.id
   const email = req.user.email;
   const operations = await models.userinfo.findOne({
     attributes: ["email", "id"],
@@ -23,7 +24,7 @@ exports.getOneOperation = async (req, res, next) => {
   });
 
   if (!operations) res.status(141).json({ error: "sho za precoly" });
-
+console.log('asd')
   const operation = operations.single_operations.filter((x) => x.id == +id)[0];
   return res.json(operation);
 };
