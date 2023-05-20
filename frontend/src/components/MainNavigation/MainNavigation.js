@@ -1,8 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
+import Button from "../../ui/Button";
 
 const MainNavigation = () => {
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <header className={classes["main-header"]}>
       <nav className={classes["main-nav"]}>
@@ -59,7 +67,21 @@ const MainNavigation = () => {
               About
             </NavLink>
           </li>
+          <li className={classes["main-nav-li"]}>
+            <NavLink
+              to="/user"
+              className={({ isActive }) => {
+                return isActive
+                  ? `${classes.link} ${classes.active}`
+                  : classes.link;
+              }}
+              end
+            >
+              User
+            </NavLink>
+          </li>
         </ul>
+        <Button onClick={logoutHandler}>Log out</Button>
       </nav>
     </header>
   );

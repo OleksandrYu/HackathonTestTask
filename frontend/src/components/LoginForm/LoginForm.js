@@ -1,7 +1,7 @@
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 
-import { Form } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 
 import classes from "./LoginForm.module.css";
 
@@ -12,7 +12,10 @@ const LoginForm = () => {
       <Input placeholder="login" name="login" />
       <Input placeholder="Password" name="password" />
       <div className={classes.actions}>
-        <Button type="submit">Register</Button>
+        <Link to="/registration">
+          <Button>Sign up</Button>
+        </Link>
+        <Button type="submit">Login</Button>
       </div>
     </Form>
   );
