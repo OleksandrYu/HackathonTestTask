@@ -94,3 +94,19 @@ exports.postAddOperation = async (req, res, next) => {
   console.log(user.id);
   res.json({ result: "success" });
 };
+
+exports.getUserInfo = async (req, res, next) => {
+  const email = req.user.email;
+  const user = await models.userinfo.findOne({
+    attributes: ["email", "name", "login"],
+    include: [
+      {
+        model: models.single_operation,
+        as: "single_operations",
+        attributes: ["description", "title", "date", "amount", "id"],
+      },
+    ],
+    where: { email: email },
+  });
+  res.json({ user: user });
+};

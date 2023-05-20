@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { redirect, Form } from "react-router-dom";
+import { Link, redirect, Form } from "react-router-dom";
 
 import classes from "./RegistrationForm.module.css";
 
@@ -63,6 +63,9 @@ const RegistrationForm = () => {
         name="password"
       />
       <div className={classes.actions}>
+        <Link to="/login">
+          <Button>Log in</Button>
+        </Link>
         <Button type="submit">Register</Button>
       </div>
     </Form>

@@ -12,6 +12,11 @@
   outline: white 5px solid;
 }
 
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 .main-nav > ul {
   list-style: none;
   padding: 0;

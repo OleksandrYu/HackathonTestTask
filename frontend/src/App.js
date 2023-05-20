@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RootLayout, { loader as rootLoader } from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
-import UserPage from "./pages/UserPage";
+import UserPage, { loader as userLoader } from "./pages/UserPage";
 import SingleOperationsPage, {
   load as operationsLoad,
 } from "./pages/SingleOperationsPage";
@@ -23,7 +23,7 @@ const App = () => {
       element: <RootLayout />,
       children: [
         { path: "", element: <HomePage />, loader: rootLoader },
-        { path: "user", element: <UserPage />, loader: rootLoader },
+        { path: "user", element: <UserPage />, loader: userLoader },
         {
           path: "operations",
           element: <OperationsPage />,
